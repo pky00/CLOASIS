@@ -1,0 +1,38 @@
+
+<table cellspacing="0" cellpadding="0" style="border-collapse: collapse;">
+    <tr>
+        <td width="70%" valign="top">
+            <table class="table table-striped" >
+                <thead>
+                    <th style="width: 20%">Image</th>
+                    <th style="width: 20%">Student ID</th>
+                    <th style="width: 60%" >Name <button class="btn btn-primary" routerLink="AddStudent" style="float:right; border-radius: 0px; padding: 0px; color:blue; background-color: transparent; border:0px; " >Add Student</button></th>
+                    
+                </thead>
+                <tbody>
+                    <tr *ngFor="let student of students" class="make-hover" [ngClass]="{highlighted: student.id === selectedStudent.id}" (click)="selectStudent(student.id)">
+                        <td style="width: 20%"><!--STUDENT IMAGE GOES HERE--></td>
+                        <td style="width: 20%">{{student.studentid}}</td>
+                        <td style="width: 60%">{{student.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td width="30%">
+            <div style="height:550px; padding: 20px; background-color: rgb(194, 191, 191);">
+                <div style="text-align: center;">
+                    <div class="btn-group" role="group" *ngIf="selectedStudent.name !== 'Please select a Student'" >
+                        <button type="button" class="btn btn-primary">Edit</button>
+                        <button type="button" class="btn btn-danger" >Delete</button>
+                    </div>
+                    <hr *ngIf="selectedStudent.name !== 'Please select a Student'">
+                    <h1 >{{selectedStudent.name}}</h1>
+                    <hr>
+                </div>
+                <p>ID Number : {{ selectedStudent.studentid }}</p>
+                <p>Email Address : {{ selectedStudent.email }}</p>
+                <hr>
+            </div>
+        </td>
+    </tr>
+</table>

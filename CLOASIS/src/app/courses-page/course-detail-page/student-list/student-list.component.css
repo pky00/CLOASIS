@@ -1,0 +1,9 @@
+.make-hover:hover {
+    background-color: grey;
+  }
+  .highlighted {
+    background: lightblue;
+  }
+  table tbody { display:block; max-height:550px; overflow-y:scroll; text-align: left;}
+  table thead, table tbody tr { display:table; width:100%; table-layout:fixed; }
+  
