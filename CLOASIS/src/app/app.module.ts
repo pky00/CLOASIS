@@ -16,6 +16,7 @@ import { CourseService } from './services/course.service';
 import { CourseResolverService } from './services/course-resolver.service';
 import { StudentListComponent } from './courses-page/course-detail-page/student-list/student-list.component';
 import { AddStudentPageComponent } from './courses-page/course-detail-page/add-student-page/add-student-page.component';
+import { EditStudentComponent } from './courses-page/course-detail-page/edit-student/edit-student.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AddStudentPageComponent } from './courses-page/course-detail-page/add-s
     SidebarComponent,
     NavbarComponent,
     StudentListComponent,
-    AddStudentPageComponent
+    AddStudentPageComponent,
+    EditStudentComponent
   ],
   imports: [
     BrowserModule,

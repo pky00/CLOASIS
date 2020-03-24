@@ -9,6 +9,9 @@ export class CourseService {
 
   studentsEmitter = new Subject<Student[]>();
 
+  currentCourse: Course;
+  currentStudent: Student;
+
   courses: Course[] = [
     {crn: "202020", name: "Intro to CMPS", coursecode: "CMPS 200", room: "Bliss 205", professor: "Ahmad Dhaini", progress: "High"},
     {crn: "202021", name: "Intro to CMPS", coursecode: "CMPS 211", room: "Bliss 205", professor: "Ahmad Dhaini", progress: "High"},
@@ -95,6 +98,15 @@ export class CourseService {
       this.enrollStudent(CRN,studentid);
       this.getCourseStudents(CRN);
     }
+  }
+
+  editStudent(id: number,student: Student){
+    this.students.forEach((std,i: number) => {
+      if(std.id === id) {
+        this.students[i] = student;
+        console.log(this.students);
+      }
+    });
   }
 
   constructor() { }

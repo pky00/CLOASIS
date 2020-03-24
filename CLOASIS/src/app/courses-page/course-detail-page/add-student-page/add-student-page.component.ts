@@ -15,18 +15,17 @@ export class AddStudentPageComponent implements OnInit {
   addForm: FormGroup;
 
   onSubmit(){
-    console.log("peterererer");
+    if(this.addForm.valid){
+      this.courseService.addStudent(this.course.crn,this.addForm.get("name").value,this.addForm.get("id").value,this.addForm.get("email").value,"");
+      this.router.navigate(['/COURSEDETAILPAGE/' + this.course.coursecode]);
+    }
   }
 
   constructor(private route: ActivatedRoute,private courseService: CourseService,private router:Router) { }
 
   ngOnInit() {
-    this.route.data
-      .subscribe(
-        (data: Data) => {
-          this.course = data['course'];
-        }
-      );
+    this.course = this.courseService.currentCourse;
+
 
       this.addForm = new FormGroup({
         'name' : new FormControl('Enter Your Full Name',[Validators.required]),

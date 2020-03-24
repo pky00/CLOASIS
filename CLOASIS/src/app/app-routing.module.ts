@@ -7,6 +7,7 @@ import { CourseDetailPageComponent } from './courses-page/course-detail-page/cou
 import { CourseResolverService } from './services/course-resolver.service';
 import { StudentListComponent } from './courses-page/course-detail-page/student-list/student-list.component';
 import { AddStudentPageComponent } from './courses-page/course-detail-page/add-student-page/add-student-page.component';
+import { EditStudentComponent } from './courses-page/course-detail-page/edit-student/edit-student.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path:'COURSESPAGE', component: CoursesPageComponent},
   {path: 'COURSEDETAILPAGE/:coursecode', component: CourseDetailPageComponent, resolve: {course: CourseResolverService},children: [
     {path:'', component: StudentListComponent},
-    {path:'AddStudent', component: AddStudentPageComponent}]},
+    {path:'AddStudent', component: AddStudentPageComponent},
+    {path:'EditStudent', component: EditStudentComponent}]},
   {path:'STUDENTSPAGE', component: StudentsPageComponent},
   {path: '**', redirectTo: 'HOMEPAGE'}
 ];

@@ -20,6 +20,7 @@ export class StudentListComponent implements OnInit {
     this.students.forEach(student => {
       if(student.id === id){
         this.selectedStudent = student;
+        this.courseService.currentStudent = student;
       }
     })
   }
@@ -34,6 +35,7 @@ export class StudentListComponent implements OnInit {
         (data: Data) => {
           this.course = data['course'];
           this.students = this.courseService.getCourseStudents(this.course.crn);
+          this.courseService.currentCourse = this.course;
         }
       );
       this.sub = this.courseService.studentsEmitter.subscribe(data => {
