@@ -25,6 +25,10 @@ export class StudentListComponent implements OnInit {
     })
   }
 
+  delete(id:string){
+    this.courseService.unregisterStudent(id,this.course.crn);
+  }
+
   constructor(private route: ActivatedRoute,private courseService: CourseService,private router:Router) { }
 
   private sub: Subscription; 

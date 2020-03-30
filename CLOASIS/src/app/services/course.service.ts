@@ -23,7 +23,13 @@ export class CourseService {
     {id: 1,studentid: "201904057",crn: "202020"},
     {id: 2,studentid: "201904058",crn: "202020"},
     {id: 3,studentid: "201904059",crn: "202020"},
-    {id: 4,studentid: "201904060",crn: "202020"},
+    {id: 4,studentid: "201904060",crn: "202021"},
+    {id: 5,studentid: "201904061",crn: "202021"},
+    {id: 6,studentid: "201904062",crn: "202021"},
+    {id: 7,studentid: "201904061",crn: "202022"},
+    {id: 8,studentid: "201904063",crn: "202020"},
+    {id: 9,studentid: "201904064",crn: "202022"},
+    {id: 10,studentid: "201904065",crn: "202022"},
   ];
 
   students: Student[] = [
@@ -105,6 +111,15 @@ export class CourseService {
       if(std.id === id) {
         this.students[i] = student;
         console.log(this.students);
+      }
+    });
+  }
+
+  unregisterStudent(id: string,crn: string){
+    this.registrations.forEach((reg, i:number) => {
+      if (reg.studentid === id && reg.crn===crn){
+        this.registrations.splice(i,1);
+        this.getCourseStudents(crn);
       }
     });
   }
