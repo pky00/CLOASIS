@@ -1,7 +1,16 @@
-<div class="wrapper">
-    <app-sidebar></app-sidebar>
-    <app-navbar></app-navbar>
-    <div class="content-wrapper">
-        <router-outlet></router-outlet>
-    </div>
-</div>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CLOASIS | Student Management System App</title>
+    </head>
+    <body class="sidebar-mini sidebar-collapse" style="height: auto;">
+        <div class="wrapper">
+            <app-sidebar></app-sidebar>
+            <app-navbar></app-navbar>
+            <div class="content-wrapper" id="content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </body>
+</html>
