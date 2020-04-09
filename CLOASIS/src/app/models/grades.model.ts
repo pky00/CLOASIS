@@ -1,8 +1,11 @@
 export class Grades{
 
     id: number;
-    grade: number;
-    gradeDescription: string;
     studentId: string;
-    static lastid: number = 0;
+    crn: string;
+    static lastid: number = 11;
+    assignment1 : number;
+    assignment2 : number;
+    midterm : number;
+    final : number;
 }

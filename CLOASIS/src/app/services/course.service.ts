@@ -30,6 +30,8 @@ export class CourseService {
     {id: 8,studentid: "201904063",crn: "202020"},
     {id: 9,studentid: "201904064",crn: "202022"},
     {id: 10,studentid: "201904065",crn: "202022"},
+    {id: 9,studentid: "201904066",crn: "202023"},
+    {id: 10,studentid: "201904067",crn: "202023"}
   ];
 
   students: Student[] = [
