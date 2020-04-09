@@ -11,7 +11,7 @@ import { Subject } from 'rxjs';
 })
 export class GradesService {
 
-  gradesEmmitter = new Subject<Grades[]>();
+  selectedStudentGradesEmmitter = new Subject<number[]>();
   cgdEmitter = new Subject<CGD[]>();
 
   grades: Grades[] = [
@@ -34,6 +34,15 @@ export class GradesService {
     {crn:"202022",assignment1:15,assignment2:25,midterm:30,final:30},
     {crn:"202023",assignment1:10,assignment2:25,midterm:25,final:40}
   ];
+
+  selectChartGrades(id:string,crn:string,g: number[] = []){
+    this.grades.forEach( grade => {
+      if(grade.studentId === id && grade.crn === crn) {
+        g = [grade.assignment1,grade.assignment2,grade.midterm,grade.final];
+      }
+    });
+    this.selectedStudentGradesEmmitter.next(g);
+  }
 
   constructor() { }
 }

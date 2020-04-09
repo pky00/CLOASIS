@@ -14,9 +14,9 @@ export class CourseService {
 
   courses: Course[] = [
     {crn: "202020", name: "Intro to CMPS", coursecode: "CMPS 200", room: "Bliss 205", professor: "Ahmad Dhaini", progress: "High"},
-    {crn: "202021", name: "Intro to CMPS", coursecode: "CMPS 211", room: "Bliss 205", professor: "Ahmad Dhaini", progress: "High"},
-    {crn: "202022", name: "Intro to CMPS", coursecode: "CMPS 299", room: "Bliss 205", professor: "Ahmad Dhaini", progress: "High"},
-    {crn: "202023", name: "Intro to CMPS", coursecode: "CMPS 201", room: "Bliss 205", professor: "Ahmad Dhaini", progress: "High"}
+    {crn: "202021", name: "Intro to AI", coursecode: "CMPS 211", room: "Bliss 205", professor: "Ahmad Dhaini", progress: "High"},
+    {crn: "202022", name: "Intro to Data Science", coursecode: "CMPS 299", room: "Bliss 205", professor: "Ahmad Dhaini", progress: "High"},
+    {crn: "202023", name: "Intro to ML", coursecode: "CMPS 201", room: "Bliss 205", professor: "Ahmad Dhaini", progress: "High"}
 ];
 
   registrations: Registration[] = [

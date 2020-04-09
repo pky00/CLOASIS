@@ -32,6 +32,17 @@
                 <p>ID Number : {{ selectedStudent.studentid }}</p>
                 <p>Email Address : {{ selectedStudent.email }}</p>
                 <hr>
+                <div *ngIf="change === false && selectedStudent.name !== 'Please select a Student'">
+                    <div style="display: block">
+                      <canvas *ngIf="change === false && selectedStudent.name !== 'Please select a Student'" baseChart
+                              [datasets]="barChartData"
+                              [labels]="barChartLabels"
+                              [options]="barChartOptions"
+                              [legend]="barChartLegend"
+                              [chartType]="barChartType">
+                      </canvas>
+                    </div>
+                  </div>
             </div>
         </td>
     </tr>

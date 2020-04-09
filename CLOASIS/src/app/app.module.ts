@@ -17,6 +17,8 @@ import { CourseResolverService } from './services/course-resolver.service';
 import { StudentListComponent } from './courses-page/course-detail-page/student-list/student-list.component';
 import { AddStudentPageComponent } from './courses-page/course-detail-page/add-student-page/add-student-page.component';
 import { EditStudentComponent } from './courses-page/course-detail-page/edit-student/edit-student.component';
+import { ChartsModule } from 'ng2-charts';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { EditStudentComponent } from './courses-page/course-detail-page/edit-stu
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule,
+    MatTabsModule
   ],
   providers: [CourseService,CourseResolverService],
   bootstrap: [AppComponent]
