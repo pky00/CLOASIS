@@ -5,6 +5,7 @@ import { Student } from '../models/student.model';
 import { Grades } from '../models/grades.model';
 import { CGD } from '../models/courseGradeDistribution.model';
 import { Subject } from 'rxjs';
+import { CourseService } from './course.service';
 
 @Injectable({
   providedIn: 'root'
@@ -29,10 +30,10 @@ export class GradesService {
   ];
 
   CGDs: CGD[] = [
-    {crn:"202020",assignment1:15,assignment2:15,midterm:30,final:40},
-    {crn:"202021",assignment1:10,assignment2:10,midterm:25,final:55},
-    {crn:"202022",assignment1:15,assignment2:25,midterm:30,final:30},
-    {crn:"202023",assignment1:10,assignment2:25,midterm:25,final:40}
+    {crn:"202020",assignment1:15,assignment2:15,midterm:30,final:40,overall:100},
+    {crn:"202021",assignment1:10,assignment2:10,midterm:25,final:55,overall:100},
+    {crn:"202022",assignment1:15,assignment2:25,midterm:30,final:30,overall:100},
+    {crn:"202023",assignment1:10,assignment2:25,midterm:25,final:40,overall:100}
   ];
 
   selectChartGrades(id:string,crn:string,g: number[] = []){
@@ -44,5 +45,75 @@ export class GradesService {
     this.selectedStudentGradesEmmitter.next(g);
   }
 
-  constructor() { }
+  getCGD(crn:string,cgd:CGD = {crn:"",assignment1:-1,assignment2:-1,midterm:-1,final:-1,overall:-1}){
+    this.CGDs.forEach(c => {
+      if(crn === c.crn){
+        cgd = c;
+      }
+    })
+    return cgd;
+  }
+
+  getGrades(crn:string,id:string,grades:Grades = {id:-1,crn:"",studentId:"",assignment1:-1,assignment2:-1,midterm:-1,final:-1}){
+    this.grades.forEach(gr =>{
+        if(gr.crn === crn && gr.studentId === id){
+          grades = gr;
+        }
+      }
+    );
+    return grades;
+  }
+
+  getAverage(grades:Grades,cgd:CGD,k = Object.getOwnPropertyNames(cgd),x: number = 0){
+    k.forEach((gr, index)=>{
+      if(index !== 0 && index !== k.length-1) {
+        x = x + cgd[gr] * grades[gr];
+      }
+    });
+    return x/cgd.overall ;
+  }
+
+  getGeneralAverage(crn: string, x:number = 0 , counter:number = 0,cgd:CGD = this.getCGD(crn)){
+    this.courseService.registrations.forEach(reg => {
+      if(reg.crn === crn){
+        counter++;
+        x = x + this.getAverage(this.getGrades(crn,reg.studentid),cgd);
+      }
+    });
+    return x/counter;
+  }
+
+  getStandardDev(crn:string,avg:number = this.getGeneralAverage(crn),x:number = 0,cgd:CGD = this.getCGD(crn) ){
+    this.courseService.registrations.forEach(reg => {
+      if(reg.crn === crn){
+        x = x + Math.pow(this.getAverage(this.getGrades(crn,reg.studentid),cgd) - avg,2)
+      }
+    });
+    return Math.sqrt(x/this.courseService.getNoOfStudents(crn));
+  }
+
+  getTopStudent(crn:string,top:Student = {id:-1,name:"",email:"",studentid:"",imagePath:""},topAvg:number = 0,cgd:CGD = this.getCGD(crn),a:number = 0){
+    this.courseService.registrations.forEach(reg => {
+      if(reg.crn === crn){
+        a=this.getAverage(this.getGrades(crn,reg.studentid),cgd)
+        if( a > topAvg) {
+          topAvg = a;
+          top = this.courseService.getStudent(reg.studentid); 
+        }
+      }
+    });
+    return [top,+topAvg.toPrecision(5)];
+  }
+
+  getPieChart(crn:string,cgd:CGD = this.getCGD(crn),cgds:string[] = [],cgdn:number[] = []){
+  Object.getOwnPropertyNames(cgd).forEach((name,index) => {
+    if(index !== 0 && index !== 5){
+      cgds.push(name);
+      cgdn.push(cgd[name]);
+    }
+    });
+    return [cgds,cgdn];
+  }
+
+  constructor(private courseService:CourseService) { }
 }

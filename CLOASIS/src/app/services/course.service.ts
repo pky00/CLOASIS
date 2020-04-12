@@ -48,6 +48,24 @@ export class CourseService {
     {id: 11,name: "Peeeeeeeter Yamout",studentid: "201904067",email:"pky00@mail.aub.edu",imagePath: ""}
   ];
 
+  getStudent(id:string, student:Student = {id:-1,name:"",email:"",studentid:"",imagePath:""}){
+    this.students.forEach(std => {
+      if(std.studentid === id){
+        student = std;
+      }
+    });
+    return student;
+  }
+
+  getNoOfStudents(crn:string,counter:number = 0){
+    this.registrations.forEach(reg => {
+      if(reg.crn === crn){
+        counter++;
+      }
+    });
+    return counter;
+  }
+
   getCourseStudents(CRN: string,a: Student[] = []){
     this.registrations.forEach(reg => {
       if(CRN === reg.crn){

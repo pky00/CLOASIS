@@ -1,2 +1,96 @@
+<div class="content-header" style="background-color: rgb(10, 7, 37);">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-light">{{page}}</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item">{{course.coursecode}}</li>
+            <li class="breadcrumb-item">{{page}}</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
 
-<router-outlet></router-outlet>
+<router-outlet ></router-outlet>
+
+<footer class="page-footer font-small indigo" style="background-color: rgb(22, 64, 83) ;">
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-2 mx-auto">
+
+            <!-- Links -->
+            <h5 class="font-weight-bold text-uppercase mt-3 mb-4"><a routerLink="/COURSEDETAILPAGE/{{course.coursecode}}" (click)="setPage('Students')">Students</a></h5>
+  
+        </div>
+          <!-- Grid column -->
+  
+          <hr class="clearfix w-100 d-md-none">
+
+        <!-- Grid column -->
+        <div class="col-md-2 mx-auto">
+
+          <!-- Links -->
+          <h5 class="font-weight-bold text-uppercase mt-3 mb-4"><a routerLink="Statistics" (click)="setPage('Statistics')">Statistics</a></h5>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none">
+
+        <!-- Grid column -->
+        <div class="col-md-1 mx-auto">
+
+          <!-- Links -->
+          <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="position: center;"><a routerLink="CLO" (click)="setPage('CLO')"> CLO </a></h5>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none">
+
+        <!-- Grid column -->
+        <div class="col-md-3 mx-auto">
+
+          <!-- Links -->
+          <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="padding-left: 25px;"><a routerLink="TeamManager" (click)="setPage('Team Manager')">Team Manager </a></h5>
+
+        </div>
+
+        <hr class="clearfix w-100 d-md-none">
+
+        <!-- Grid column -->
+        <div class="col-md-2 mx-auto">
+
+            <!-- Links -->
+            <h5 class="font-weight-bold text-uppercase mt-3 mb-4"><a routerLink="Exams" (click)="setPage('Exams')"> Exams </a></h5>
+  
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none">
+
+        <!-- Grid column -->
+        <div class="col-md-2 mx-auto">
+
+          <!-- Links -->
+          <h5 class="font-weight-bold text-uppercase mt-3 mb-4"><a routerLink="Assignments" (click)="setPage('Assignments')">Assignments</a></h5>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+  </footer>
