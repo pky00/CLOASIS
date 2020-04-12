@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -17,8 +16,6 @@ import { CourseResolverService } from './services/course-resolver.service';
 import { StudentListComponent } from './courses-page/course-detail-page/student-list/student-list.component';
 import { AddStudentPageComponent } from './courses-page/course-detail-page/add-student-page/add-student-page.component';
 import { EditStudentComponent } from './courses-page/course-detail-page/edit-student/edit-student.component';
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +33,8 @@ import { EditStudentComponent } from './courses-page/course-detail-page/edit-stu
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [CourseService,CourseResolverService],
   bootstrap: [AppComponent]

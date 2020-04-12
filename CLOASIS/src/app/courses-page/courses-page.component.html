@@ -1,1 +1,121 @@
-<p>courses-page works!</p>
+
+<!-- 
+<div class="box">
+    <div class="box-header">
+      <h3 class="box-title">Responsive Hover Table</h3>
+
+      <div class="box-tools">
+        <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+          <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="box-body table-responsive no-padding">
+      <table class="table table-hover">
+        <tr>
+          <th>CRN</th>
+          <th>Name</th>
+          <th>Course Code</th>
+          <th>Room</th>
+          <th>Instructor</th>
+          <th>Progress</th>
+        </tr>
+        <tr *ngFor="let course of courses" >
+          <td>{{course.crn}}</td>
+          <td>{{course.name}}</td>
+          <td>{{course.coursecode}}</td>
+          <td>{{course.room}}</td>
+          <td>{{course.professor}}</td>
+          <td>{{course.progress}}</td>
+          <td><span class="label label-success">Approved</span></td>
+          <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+        </tr>
+        
+      </table>
+    </div>
+   
+  </div>
+
+-->
+
+
+<div class="card w-100">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Courses</h3>
+    <div class="card-body">
+      <div id="table" class="table-editable" >
+        <span class="table-add float-right mb-3 mr-2">
+          <button type="button" mdbBtn class="btn btn-success"  rounded="true" size="md"  >Add Course</button>
+        </span>
+        <table class="table table-bordered table-responsive-md table-striped text-center">
+          <tr>
+            <th class="text-center">CRN</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Course Code</th>
+            <th class="text-center">Room</th>
+            <th class="text-center">Instructor</th>
+            <th class="text-center">Progress</th>
+            <th class="text-center">Click To Remove</th>
+            <th class="text-center">Click To Edit</th>
+          </tr>
+          <tr *ngFor="let course of courses; let id = index" class="hover-highlight">
+            <td >
+              <span *ngIf="course.crn!==editcourse_crn">{{course.crn}}</span>
+              <input #crn *ngIf="course.crn===editcourse_crn" class="form-control" value={{course.crn}}>
+            </td>
+            <td >
+                <span *ngIf="course.crn!==editcourse_crn">{{course.name}}</span>
+              <input #name *ngIf="course.crn===editcourse_crn" class="form-control" value={{course.name}}>
+            </td>
+            <td >
+                <span *ngIf="course.crn!==editcourse_crn">{{course.coursecode}}</span>
+              <input #coursecode *ngIf="course.crn===editcourse_crn" class="form-control" value={{course.coursecode}}>
+            </td>
+            <td>
+                <span *ngIf="course.crn!==editcourse_crn">{{course.room}}</span>
+              <input #room *ngIf="course.crn===editcourse_crn" class="form-control" value={{course.room}}>
+            </td>
+            <td>
+                <span *ngIf="course.crn!==editcourse_crn">{{course.professor}}</span>
+              <input #professor *ngIf="course.crn===editcourse_crn" class="form-control" value={{course.professor}}>
+            </td>
+            <td>
+                <span *ngIf="course.crn!==editcourse_crn">{{course.progress}}</span>
+                <input #progress *ngIf="course.crn===editcourse_crn" class="form-control" value={{course.progress}}>
+              </td>
+              <!-- 
+            <td>
+              <span class="table-up">
+                <a class="indigo-text">
+                  <mdb-icon fas icon="long-arrow-alt-up"></mdb-icon>
+                </a>
+              </span>
+              <span class="table-down">
+                <a class="indigo-text">
+                  <mdb-icon fas icon="long-arrow-alt-down"></mdb-icon>
+                </a>
+              </span>
+            </td>
+            -->
+            <td>
+              <span class="table-remove">
+                <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(course.crn)">Remove</button>
+              </span>
+            </td>
+            <td>
+                <button *ngIf="editcourse_crn===course.crn"  (click)="disableEdit()"  size="sm" rounded="true" class="btn btn-danger" type="button" mdbBtn  ng-click="cancel()">Cancel</button>
+                <button *ngIf="editcourse_crn===course.crn" id="saveBtn"  class="btn btn-info" size="sm" rounded="true" (click)="onSave(course.crn, course.id)"type="button" mdbBtn >Save</button>
+                <button type="button" mdbBtn class="btn btn-success"  rounded="true" size="sm" *ngIf="editcourse_crn!==course.crn" (click)="enableEditMethod(course.crn)">Edit</button>
+            
+            </td>
+            
+          </tr>
+
+        </table>
+      </div>
+    </div>
+  </div>
