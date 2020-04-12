@@ -6,7 +6,7 @@
                 <thead>
                     <th style="width: 20%">Image</th>
                     <th style="width: 20%">Student ID</th>
-                    <th style="width: 60%" >Name <button class="btn btn-primary" routerLink="AddStudent" style="float:right; border-radius: 0px; padding: 0px; color:blue; background-color: transparent; border:0px; " >Add Student</button></th>
+                    <th style="width: 60%" >Name <a routerLink="AddStudent" style="float:right; border-radius: 0px; padding: 0px; color:blue; background-color: transparent; border:0px; " >Add Student</a></th>
                     
                 </thead>
                 <tbody>
@@ -18,8 +18,8 @@
                 </tbody>
             </table>
         </td>
-        <td width="30%">
-            <div style="height:100%; padding: 20px; background-color: rgb(194, 191, 191); color:black;">
+        <td width="30%" style=" border-left-color: white;border-bottom-width: 0px;border-top-width: 1px; border-left-width: 1px; border-style: solid; border-right-width:0px ;">
+            <div style="height:100%; padding: 20px; background-color: transparent; color:white;">
                 <div style="text-align: center;">
                     <div class="btn-group" role="group" *ngIf="selectedStudent.name !== 'Please select a Student'" >
                         <button type="button" class="btn btn-primary" routerLink="EditStudent">Edit</button>

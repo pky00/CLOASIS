@@ -44,7 +44,7 @@
 -->
 
 
-<div class="card w-100">
+<div class="card w-100" style="color: black;"> 
     <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Courses</h3>
     <div class="card-body">
       <div id="table" class="table-editable" >
@@ -108,7 +108,7 @@
             </td>
             <td>
                 <button *ngIf="editcourse_crn===course.crn"  (click)="disableEdit()"  size="sm" rounded="true" class="btn btn-danger" type="button" mdbBtn  ng-click="cancel()">Cancel</button>
-                <button *ngIf="editcourse_crn===course.crn" id="saveBtn"  class="btn btn-info" size="sm" rounded="true" (click)="onSave(course.crn, course.id)"type="button" mdbBtn >Save</button>
+                <button *ngIf="editcourse_crn===course.crn" id="saveBtn"  class="btn btn-info" size="sm" rounded="true" (click)="onSave(course.crn)"type="button" mdbBtn >Save</button>
                 <button type="button" mdbBtn class="btn btn-success"  rounded="true" size="sm" *ngIf="editcourse_crn!==course.crn" (click)="enableEditMethod(course.crn)">Edit</button>
             
             </td>

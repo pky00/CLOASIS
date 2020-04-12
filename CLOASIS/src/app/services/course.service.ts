@@ -32,8 +32,8 @@ export class CourseService {
     {id: 8,studentid: "201904063",crn: "202020"},
     {id: 9,studentid: "201904064",crn: "202022"},
     {id: 10,studentid: "201904065",crn: "202022"},
-    {id: 9,studentid: "201904066",crn: "202023"},
-    {id: 10,studentid: "201904067",crn: "202023"}
+    {id: 11,studentid: "201904066",crn: "202023"},
+    {id: 12,studentid: "201904067",crn: "202023"}
   ];
 
   students: Student[] = [
@@ -82,7 +82,7 @@ export class CourseService {
     return a;
   }
 
-  getCourse(courseCode: string, a: Course = {id:null,crn:"N/A", name: "N/A", coursecode: "N/A", room: "N/A", professor: "N/A", progress: "N/A"}){
+  getCourse(courseCode: string, a: Course = {crn:"N/A", name: "N/A", coursecode: "N/A", room: "N/A", professor: "N/A", progress: "N/A"}){
     this.courses.forEach(course => {
       if (course.coursecode === courseCode) {
         a=course;
@@ -98,8 +98,8 @@ export class CourseService {
     return a;
   }
 
-  addCourse(id:number,crn: string, name: string, coursecode: string,room: string,professor: string,progress: string){
-    this.courses.push({id:id,crn:crn,name:name,coursecode:coursecode,room:room,professor:professor,progress:progress});
+  addCourse(crn: string, name: string, coursecode: string,room: string,professor: string,progress: string){
+    this.courses.push({crn:crn,name:name,coursecode:coursecode,room:room,professor:professor,progress:progress});
   }
 
   enrollStudent(CRN:string,studentid:string){
@@ -169,11 +169,10 @@ export class CourseService {
 
   
 
-  editcourse(id: number,course: Course){
+  editcourse(crn:string,course: Course){
     this.courses.forEach((cor,i: number) => {
-      if(cor.id === id) {
+      if(cor.crn === crn) {
         this.courses[i] = course;
-        console.log(this.courses);
       }
     });
   }
