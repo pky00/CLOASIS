@@ -15,10 +15,10 @@ export class CourseService {
 
 
   courses: Course[] = [
-    {id:1, crn: "202020", name: "Intro to CMPS", coursecode: "CMPS 200", room: "Bliss 205", professor: "Ahmad Dhaini", progress: "High"},
-    {id:2, crn: "202021", name: "Intro to CMPS", coursecode: "CMPS 211", room: "Bliss 205", professor: "Ahmad Dhaini", progress: "High"},
-    {id:3, crn: "202022", name: "Intro to CMPS", coursecode: "CMPS 299", room: "Bliss 205", professor: "Ahmad Dhaini", progress: "High"},
-    {id:4,crn: "202023", name: "Intro to CMPS", coursecode: "CMPS 201", room: "Bliss 205", professor: "Ahmad Dhaini", progress: "High"}
+    {crn: "202020", name: "Intro to CMPS", coursecode: "CMPS 200", room: "Bliss 205", professor: "Ahmad Dhaini", progress: "High"},
+    {crn: "202021", name: "Intro to AI", coursecode: "CMPS 211", room: "Bliss 205", professor: "Ahmad Dhaini", progress: "High"},
+    {crn: "202022", name: "Intro to Data Science", coursecode: "CMPS 299", room: "Bliss 205", professor: "Ahmad Dhaini", progress: "High"},
+    {crn: "202023", name: "Intro to ML", coursecode: "CMPS 201", room: "Bliss 205", professor: "Ahmad Dhaini", progress: "High"}
 ];
 
   registrations: Registration[] = [
@@ -32,6 +32,8 @@ export class CourseService {
     {id: 8,studentid: "201904063",crn: "202020"},
     {id: 9,studentid: "201904064",crn: "202022"},
     {id: 10,studentid: "201904065",crn: "202022"},
+    {id: 9,studentid: "201904066",crn: "202023"},
+    {id: 10,studentid: "201904067",crn: "202023"}
   ];
 
   students: Student[] = [
@@ -47,6 +49,24 @@ export class CourseService {
     {id: 10,name: "Peeeeeter Yamout",studentid: "201904066",email:"pky00@mail.aub.edu",imagePath: ""},
     {id: 11,name: "Peeeeeeeter Yamout",studentid: "201904067",email:"pky00@mail.aub.edu",imagePath: ""}
   ];
+
+  getStudent(id:string, student:Student = {id:-1,name:"",email:"",studentid:"",imagePath:""}){
+    this.students.forEach(std => {
+      if(std.studentid === id){
+        student = std;
+      }
+    });
+    return student;
+  }
+
+  getNoOfStudents(crn:string,counter:number = 0){
+    this.registrations.forEach(reg => {
+      if(reg.crn === crn){
+        counter++;
+      }
+    });
+    return counter;
+  }
 
   getCourseStudents(CRN: string,a: Student[] = []){
     this.registrations.forEach(reg => {

@@ -3,6 +3,7 @@ import { Course } from 'src/app/models/course.model';
 import { ActivatedRoute, Data } from '@angular/router';
 import { Student } from 'src/app/models/student.model';
 import { CourseService } from 'src/app/services/course.service';
+import { RoutingExtrasService } from 'src/app/services/routing-extras.service';
 
 @Component({
   selector: 'app-course-detail-page',
@@ -11,15 +12,26 @@ import { CourseService } from 'src/app/services/course.service';
 })
 export class CourseDetailPageComponent implements OnInit{
 
-  course: Course;
+  setPage(i:string){
+    this.routingExtras.setCoursePage(i);
+  }
 
-  constructor(private route: ActivatedRoute,private courseService: CourseService) { }
+  course: Course;
+  page: string = "Students";
+
+  constructor(private route: ActivatedRoute,private courseService: CourseService,private routingExtras: RoutingExtrasService) { }
 
   ngOnInit() {
     this.route.data
       .subscribe(
         (data: Data) => {
           this.course = data['course'];
+        }
+      );
+    this.routingExtras.coursePage
+      .subscribe(
+        (page: string) => {
+          this.page = page;
         }
       );
   }

@@ -1,0 +1,77 @@
+<div style="padding-left: 15px;">
+    <div class="row" style="width: 100%; padding-top: 15px;">
+        <div class="col-3">
+            <div class="small-box bg-info">
+                <div class="inner">
+                  <p style="text-align: center; font-size: 35px">General Average</p>
+    
+                  <p style="text-align: center; font-size: 30px">{{generalAverage}}</p>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-3">
+          <!-- small box -->
+          <div class="small-box bg-success">
+            <div class="inner">
+                <p style="text-align: center; font-size: 35px">No. Of Students</p>
+    
+                <p style="text-align: center; font-size: 30px">{{numberOfStudents}}</p>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-3">
+          <!-- small box -->
+          <div class="small-box bg-warning">
+            <div class="inner">
+                <p style="text-align: center; font-size: 35px">Standard Deviation</p>
+    
+                <p style="text-align: center; font-size: 30px">{{standDev}}</p>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-3">
+          <!-- small box -->
+          <div class="small-box bg-danger">
+            <div class="inner">
+                <p style="text-align: center; font-size: 35px">Top Student</p>
+    
+                <p style="text-align: center; font-size: 30px">{{topStudent.name}} {{topAvg}}</p>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card" style="width: 700px; height: 500px; background-color: rgb(10, 80, 80);">
+                <div class="card-header ui-sortable-handle" style="cursor: move;">
+                    <h3 class="card-title">
+                        <i class="fas fa-chart-pie mr-1" ></i>
+                        Grade Distribution
+                    </h3>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    <div class="tab-content p-0">
+                        <div style="width: auto; height: auto">
+                            <canvas
+                                baseChart
+                                [chartType]="'pie'"
+                                [datasets]="pieChartData"
+                                [labels]="pieChartLabels"
+                                [options]="pieChartOptions"
+                                [legend]="true"
+                                [colors]="pieChartColor">
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    </div>
+</div>
+

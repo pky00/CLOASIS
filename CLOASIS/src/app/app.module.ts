@@ -16,6 +16,15 @@ import { CourseResolverService } from './services/course-resolver.service';
 import { StudentListComponent } from './courses-page/course-detail-page/student-list/student-list.component';
 import { AddStudentPageComponent } from './courses-page/course-detail-page/add-student-page/add-student-page.component';
 import { EditStudentComponent } from './courses-page/course-detail-page/edit-student/edit-student.component';
+import { ChartsModule } from 'ng2-charts';
+import {MatTabsModule} from '@angular/material/tabs';
+import { CourseStatisticsPageComponent } from './courses-page/course-detail-page/course-statistics-page/course-statistics-page.component';
+import { CourseCLOPageComponent } from './courses-page/course-detail-page/course-clo-page/course-clo-page.component';
+import { TeamManagerPageComponent } from './courses-page/course-detail-page/team-manager-page/team-manager-page.component';
+import { ExamsPageComponent } from './courses-page/course-detail-page/exams-page/exams-page.component';
+import { AssignmentsPageComponent } from './courses-page/course-detail-page/assignments-page/assignments-page.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,13 +36,20 @@ import { EditStudentComponent } from './courses-page/course-detail-page/edit-stu
     NavbarComponent,
     StudentListComponent,
     AddStudentPageComponent,
-    EditStudentComponent
+    EditStudentComponent,
+    CourseStatisticsPageComponent,
+    CourseCLOPageComponent,
+    TeamManagerPageComponent,
+    ExamsPageComponent,
+    AssignmentsPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     ReactiveFormsModule,
+    ChartsModule,
+    MatTabsModule,
     MDBBootstrapModule.forRoot()
   ],
   providers: [CourseService,CourseResolverService],

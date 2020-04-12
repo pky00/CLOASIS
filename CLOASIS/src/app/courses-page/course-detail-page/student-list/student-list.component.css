@@ -2,8 +2,8 @@
     background-color: grey;
   }
   .highlighted {
-    background: lightblue;
+    background: rgb(117, 134, 139);
   }
-  table tbody { display:block; max-height:550px; overflow-y:scroll; text-align: left;}
+  table tbody { display:block; max-height:602px; overflow-y:scroll; text-align: left;}
   table thead, table tbody tr { display:table; width:100%; table-layout:fixed; }
   
