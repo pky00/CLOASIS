@@ -25,15 +25,22 @@ export class CourseService {
     {id: 1,studentid: "201904057",crn: "202020"},
     {id: 2,studentid: "201904058",crn: "202020"},
     {id: 3,studentid: "201904059",crn: "202020"},
-    {id: 4,studentid: "201904060",crn: "202021"},
-    {id: 5,studentid: "201904061",crn: "202021"},
-    {id: 6,studentid: "201904062",crn: "202021"},
-    {id: 7,studentid: "201904061",crn: "202022"},
-    {id: 8,studentid: "201904063",crn: "202020"},
-    {id: 9,studentid: "201904064",crn: "202022"},
-    {id: 10,studentid: "201904065",crn: "202022"},
-    {id: 11,studentid: "201904066",crn: "202023"},
-    {id: 12,studentid: "201904067",crn: "202023"}
+    {id: 4,studentid: "201904060",crn: "202020"},
+    {id: 5,studentid: "201904061",crn: "202020"},
+    {id: 6,studentid: "201904062",crn: "202020"},
+    {id: 9,studentid: "201904064",crn: "202020"},
+    {id: 10,studentid: "201904065",crn: "202020"},
+    {id: 11,studentid: "201904066",crn: "202020"},
+    {id: 12,studentid: "201904067",crn: "202020"},
+    {id: 13,studentid: "201904060",crn: "202021"},
+    {id: 14,studentid: "201904061",crn: "202021"},
+    {id: 15,studentid: "201904062",crn: "202021"},
+    {id: 16,studentid: "201904061",crn: "202022"},
+    {id: 17,studentid: "201904063",crn: "202020"},
+    {id: 18,studentid: "201904064",crn: "202022"},
+    {id: 19,studentid: "201904065",crn: "202022"},
+    {id: 20,studentid: "201904066",crn: "202023"},
+    {id: 21,studentid: "201904067",crn: "202023"}
   ];
 
   students: Student[] = [

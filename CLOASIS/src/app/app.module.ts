@@ -22,6 +22,7 @@ import { CourseCLOPageComponent } from './courses-page/course-detail-page/course
 import { TeamManagerPageComponent } from './courses-page/course-detail-page/team-manager-page/team-manager-page.component';
 import { ExamsPageComponent } from './courses-page/course-detail-page/exams-page/exams-page.component';
 import { AssignmentsPageComponent } from './courses-page/course-detail-page/assignments-page/assignments-page.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { AssignmentsPageComponent } from './courses-page/course-detail-page/assi
     FontAwesomeModule,
     ReactiveFormsModule,
     ChartsModule,
+    NgbModule,
     MDBBootstrapModule.forRoot()
   ],
   providers: [CourseService,CourseResolverService],
