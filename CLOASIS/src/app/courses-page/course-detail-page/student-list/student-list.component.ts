@@ -15,7 +15,7 @@ export class StudentListComponent implements OnInit {
 
   course: Course;
   students: Student[];
-  selectedStudent: Student = {id:0,name:"Please select a Student",studentid:"",email:"",imagePath:""};
+  selectedStudent: Student = {studentid: "",name: "Please select a Student",email:"",teaM_ID: "",phone:"",dob:"",gender:""};
   selectedStudentGrades: number[] = [20,40,60,70];
   change: boolean = false;
 
@@ -41,9 +41,9 @@ export class StudentListComponent implements OnInit {
     {data: this.selectedStudentGrades}
   ];
 
-  selectStudent(id:number){
+  selectStudent(id:string){
     this.students.forEach(student => {
-      if(student.id === id){
+      if(student.studentid === id){
         this.change = true;
         setTimeout(() => {
           this.change = false;

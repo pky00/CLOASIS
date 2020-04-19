@@ -18,7 +18,7 @@ export class EditStudentComponent implements OnInit {
 
   onSubmit(){
     if(this.addForm.valid){
-      this.courseService.editStudent(this.student.id,{id:this.student.id,name: this.addForm.get('name').value,studentid: this.addForm.get('id').value,email: this.addForm.get('email').value,imagePath: ""});
+      this.courseService.editStudent(this.student.studentid,{studentid:this.student.studentid,name: this.addForm.get('name').value,email: this.addForm.get('email').value,teaM_ID: "",phone:"",dob:"",gender:""});
       this.router.navigate(['/COURSEDETAILPAGE/' + this.course.coursecode]);
     }
   }

@@ -16,7 +16,7 @@ export class AddStudentPageComponent implements OnInit {
 
   onSubmit(){
     if(this.addForm.valid){
-      this.courseService.addStudent(this.course.crn,this.addForm.get("name").value,this.addForm.get("id").value,this.addForm.get("email").value,"");
+      //this.courseService.addStudent(this.course.crn,this.addForm.get("name").value,this.addForm.get("id").value,this.addForm.get("email").value,"");
       this.router.navigate(['/COURSEDETAILPAGE/' + this.course.coursecode]);
     }
   }

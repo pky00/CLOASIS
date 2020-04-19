@@ -44,20 +44,20 @@ export class CourseService {
   ];
 
   students: Student[] = [
-    {id: 1,name: "Peter Yamout",studentid: "201904057",email:"pky00@mail.aub.edu",imagePath: ""},
-    {id: 2,name: "Peter Yamoout",studentid: "201904058",email:"pky00@mail.aub.edu",imagePath: ""},
-    {id: 3,name: "Peter Yamooout",studentid: "201904059",email:"pky00@mail.aub.edu",imagePath: ""},
-    {id: 4,name: "Peter Yamoooout",studentid: "201904060",email:"pky00@mail.aub.edu",imagePath: ""},
-    {id: 5,name: "Peter Yamooooout",studentid: "201904061",email:"pky00@mail.aub.edu",imagePath: ""},
-    {id: 6,name: "Peter Yamouooooot",studentid: "201904062",email:"pky00@mail.aub.edu",imagePath: ""},
-    {id: 7,name: "Peeter Yamout",studentid: "201904063",email:"pky00@mail.aub.edu",imagePath: ""},
-    {id: 8,name: "Peeeter Yamout",studentid: "201904064",email:"pky00@mail.aub.edu",imagePath: ""},
-    {id: 9,name: "Peeeeter Yamout",studentid: "201904065",email:"pky00@mail.aub.edu",imagePath: ""},
-    {id: 10,name: "Peeeeeter Yamout",studentid: "201904066",email:"pky00@mail.aub.edu",imagePath: ""},
-    {id: 11,name: "Peeeeeeeter Yamout",studentid: "201904067",email:"pky00@mail.aub.edu",imagePath: ""}
+    {studentid: "201904057",name: "Peter Yamout",email:"pky00@mail.aub.edu",teaM_ID: null,phone:"+961 71 000000",dob:"1999-01-01T00:00:00",gender:"M"},
+    {studentid: "201904058",name: "Peter Yamoout",email:"pky00@mail.aub.edu",teaM_ID: null,phone:"+961 71 000000",dob:"1999-01-01T00:00:00",gender:"M"},
+    {studentid: "201904059",name: "Peter Yamooout",email:"pky00@mail.aub.edu",teaM_ID: null,phone:"+961 71 000000",dob:"1999-01-01T00:00:00",gender:"M"},
+    {studentid: "201904060",name: "Peter Yamoooout",email:"pky00@mail.aub.edu",teaM_ID: null,phone:"+961 71 000000",dob:"1999-01-01T00:00:00",gender:"M"},
+    {studentid: "201904061",name: "Peter Yamooooout",email:"pky00@mail.aub.edu",teaM_ID: null,phone:"+961 71 000000",dob:"1999-01-01T00:00:00",gender:"M"},
+    {studentid: "201904062",name: "Peter Yamouooooot",email:"pky00@mail.aub.edu",teaM_ID: null,phone:"+961 71 000000",dob:"1999-01-01T00:00:00",gender:"M"},
+    {studentid: "201904063",name: "Peeter Yamout",email:"pky00@mail.aub.edu",teaM_ID: null,phone:"+961 71 000000",dob:"1999-01-01T00:00:00",gender:"M"},
+    {studentid: "201904064",name: "Peeeter Yamout",email:"pky00@mail.aub.edu",teaM_ID: null,phone:"+961 71 000000",dob:"1999-01-01T00:00:00",gender:"M"},
+    {studentid: "201904065",name: "Peeeeter Yamout",email:"pky00@mail.aub.edu",teaM_ID: null,phone:"+961 71 000000",dob:"1999-01-01T00:00:00",gender:"M"},
+    {studentid: "201904066",name: "Peeeeeter Yamout",email:"pky00@mail.aub.edu",teaM_ID: null,phone:"+961 71 000000",dob:"1999-01-01T00:00:00",gender:"M"},
+    {studentid: "201904067",name: "Peeeeeeeter Yamout",email:"pky00@mail.aub.edu",teaM_ID: null,phone:"+961 71 000000",dob:"1999-01-01T00:00:00",gender:"M"}
   ];
 
-  getStudent(id:string, student:Student = {id:-1,name:"",email:"",studentid:"",imagePath:""}){
+  getStudent(id:string, student:Student = {studentid: "",name: "",email:"",teaM_ID: "",phone:"",dob:"",gender:""}){
     this.students.forEach(std => {
       if(std.studentid === id){
         student = std;
@@ -114,32 +114,10 @@ export class CourseService {
     Registration.lastid = Registration.lastid + 1;
   }
 
-  addStudent(CRN:string,name: string,studentid: string,email:string,imagePath: string,isn:boolean = false,reg:boolean = false){
-    this.students.forEach(std => {
-      if(std.studentid===studentid){
-        isn=true;
-      }
-    });
-    if(isn===false){
-      this.students.push({id: Student.lastid+1,name: name,studentid: studentid,email:email,imagePath: imagePath});
-      Student.lastid++;
-    }
-    this.registrations.forEach(std => {
-      if(std.studentid===studentid && std.crn === CRN){
-        reg=true;
-      }
-    });
-    if(reg===false){
-      this.enrollStudent(CRN,studentid);
-      this.getCourseStudents(CRN);
-    }
-  }
-
-  editStudent(id: number,student: Student){
+  editStudent(id: string,student: Student){
     this.students.forEach((std,i: number) => {
-      if(std.id === id) {
+      if(std.studentid === id) {
         this.students[i] = student;
-        console.log(this.students);
       }
     });
   }

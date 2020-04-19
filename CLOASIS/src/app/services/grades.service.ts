@@ -99,7 +99,7 @@ export class GradesService {
     return Math.sqrt(x/this.courseService.getNoOfStudents(crn));
   }
 
-  getTopStudent(crn:string,top:Student = {id:-1,name:"",email:"",studentid:"",imagePath:""},topAvg:number = 0,cgd:CGD = this.getCGD(crn),a:number = 0){
+  getTopStudent(crn:string,top:Student = {studentid: "",name: "",email:"",teaM_ID: "",phone:"",dob:"",gender:""},topAvg:number = 0,cgd:CGD = this.getCGD(crn),a:number = 0){
     this.courseService.registrations.forEach(reg => {
       if(reg.crn === crn){
         a=this.getAverage(this.getGrades(crn,reg.studentid),cgd)

@@ -10,7 +10,7 @@
                     
                 </thead>
                 <tbody style="height: 100%;">
-                    <tr *ngFor="let student of students" class="make-hover" [ngClass]="{highlighted: student.id === selectedStudent.id}" (click)="selectStudent(student.id)">
+                    <tr *ngFor="let student of students" class="make-hover" [ngClass]="{highlighted: student.studentid === selectedStudent.studentid}" (click)="selectStudent(student.studentid)">
                         <td style="width: 20%"><!--STUDENT IMAGE GOES HERE--></td>
                         <td style="width: 20%">{{student.studentid}}</td>
                         <td style="width: 60%">{{student.name}}</td>
