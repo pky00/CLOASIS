@@ -12,6 +12,7 @@ export class CourseService {
   currentCourse: Course;
   currentStudent: Student;
   editField: string;
+  editStudent_ID: string="";
 
 
   courses: Course[] = [
@@ -144,6 +145,9 @@ export class CourseService {
     return this.courses.slice();
   }
 
+  getStudents(){
+    return this.students.slice();
+  }
   remove(crn: string) {
     this.courses.forEach((course,i:number)=>{
       if (course.crn===crn){
