@@ -13,11 +13,13 @@ import { CourseCLOPageComponent } from './courses-page/course-detail-page/course
 import { TeamManagerPageComponent } from './courses-page/course-detail-page/team-manager-page/team-manager-page.component';
 import { ExamsPageComponent } from './courses-page/course-detail-page/exams-page/exams-page.component';
 import { AssignmentsPageComponent } from './courses-page/course-detail-page/assignments-page/assignments-page.component';
+import { EditStudentTableComponent } from './home-page/student-table/edit-student-table/edit-student-table.component';
 
 
 const routes: Routes = [
   {path:'HOMEPAGE', component: HomePageComponent},
   {path:'COURSESPAGE', component: CoursesPageComponent},
+  {path:'HOMEPAGE/EditStudent',component:EditStudentTableComponent},
   {path: 'COURSEDETAILPAGE/:coursecode', component: CourseDetailPageComponent, resolve: {course: CourseResolverService},children: [
     {path:'', component: StudentListComponent},
     {path:'AddStudent', component: AddStudentPageComponent},
