@@ -23,6 +23,8 @@ import { TeamManagerPageComponent } from './courses-page/course-detail-page/team
 import { ExamsPageComponent } from './courses-page/course-detail-page/exams-page/exams-page.component';
 import { AssignmentsPageComponent } from './courses-page/course-detail-page/assignments-page/assignments-page.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { StudentTableComponent } from './home-page/student-table/student-table.component';
+import { EditStudentTableComponent } from './home-page/student-table/edit-student-table/edit-student-table.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     CourseCLOPageComponent,
     TeamManagerPageComponent,
     ExamsPageComponent,
-    AssignmentsPageComponent
+    AssignmentsPageComponent,
+    StudentTableComponent,
+    EditStudentTableComponent
   ],
   imports: [
     BrowserModule,
