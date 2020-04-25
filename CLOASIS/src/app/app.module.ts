@@ -24,7 +24,6 @@ import { ExamsPageComponent } from './courses-page/course-detail-page/exams-page
 import { AssignmentsPageComponent } from './courses-page/course-detail-page/assignments-page/assignments-page.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-
 @NgModule({
   declarations: [
     AppComponent,
