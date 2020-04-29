@@ -69,7 +69,7 @@
                 <button *ngIf="editstudent_ID===student.studentid"  (click)="disableEdit()"  size="sm" rounded="true" class="btn btn-danger" type="button" mdbBtn  ng-click="cancel()">Cancel</button>
                 <button *ngIf="editstudent_ID===student.studentid" id="saveBtn"  class="btn btn-info" size="sm" rounded="true" (click)="onSave(student.studentid)"type="button" mdbBtn >Save</button>
                   -->
-                <a [routerLink]="['/HOMEPAGE/EditStudent']"><button type="button" mdbBtn class="btn btn-success"  rounded="true" size="sm" *ngIf="editstudent_ID!==student.studentid" (click)="enableEditMethod(student.studentid)">Edit</button></a>
+                <a routerLink="EditStudent"><button type="button" mdbBtn class="btn btn-success"  rounded="true" size="sm" *ngIf="editstudent_ID!==student.studentid" (click)="enableEditMethod(student.studentid)">Edit</button></a>
             
             </td>
             

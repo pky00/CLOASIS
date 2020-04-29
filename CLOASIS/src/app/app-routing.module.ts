@@ -13,13 +13,13 @@ import { CourseCLOPageComponent } from './courses-page/course-detail-page/course
 import { TeamManagerPageComponent } from './courses-page/course-detail-page/team-manager-page/team-manager-page.component';
 import { ExamsPageComponent } from './courses-page/course-detail-page/exams-page/exams-page.component';
 import { AssignmentsPageComponent } from './courses-page/course-detail-page/assignments-page/assignments-page.component';
-import { EditStudentTableComponent } from './home-page/student-table/edit-student-table/edit-student-table.component';
+import { EditStudentTableComponent } from './students-page/student-table/edit-student-table/edit-student-table.component';
+import { StudentTableComponent } from './students-page/student-table/student-table.component';
 
 
 const routes: Routes = [
   {path:'HOMEPAGE', component: HomePageComponent},
   {path:'COURSESPAGE', component: CoursesPageComponent},
-  {path:'HOMEPAGE/EditStudent',component:EditStudentTableComponent},
   {path: 'COURSEDETAILPAGE/:coursecode', component: CourseDetailPageComponent, resolve: {course: CourseResolverService},children: [
     {path:'', component: StudentListComponent},
     {path:'AddStudent', component: AddStudentPageComponent},
@@ -29,7 +29,10 @@ const routes: Routes = [
     {path:'TeamManager', component:TeamManagerPageComponent},
     {path:'Exams', component: ExamsPageComponent},
     {path:'Assignments', component: AssignmentsPageComponent}]},
-  {path:'STUDENTSPAGE', component: StudentsPageComponent},
+  {path:'STUDENTSPAGE', component: StudentsPageComponent, children: [
+    {path:'', component: StudentTableComponent},
+    {path:'EditStudent', component: EditStudentTableComponent}
+  ]},
   {path: '**', redirectTo: 'HOMEPAGE'}
 ];
 

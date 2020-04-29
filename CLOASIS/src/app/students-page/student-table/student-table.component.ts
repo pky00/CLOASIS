@@ -8,16 +8,19 @@ import { Student } from 'src/app/models/student.model';
   styleUrls: ['./student-table.component.css']
 })
 export class StudentTableComponent implements OnInit {
-  students: Student[]
+  students: any;
   editstudent_ID:string="";
   constructor(private courseService: CourseService) { }
 
   ngOnInit(): void {
-    this.students=this.courseService.getStudents();
+    this.courseService.getStudents();
+    this.courseService.allStudentsEmiiter.subscribe( stds => {
+      this.students =stds;
+    });
   }
 
   remove(ID: string){
-
+    this.courseService.removeStudent(ID);
   }
 
   enableEditMethod(ID: string){

@@ -16,7 +16,7 @@ export class AddStudentPageComponent implements OnInit {
 
   onSubmit(){
     if(this.addForm.valid){
-      //this.courseService.addStudent(this.course.crn,this.addForm.get("name").value,this.addForm.get("id").value,this.addForm.get("email").value,"");
+      this.courseService.addStudent(this.course.crn,this.addForm.get("id").value,null,this.addForm.get("name").value,this.addForm.get("email").value,this.addForm.get("phone").value,this.addForm.get("dob").value,this.addForm.get("gender").value);
       this.router.navigate(['/COURSEDETAILPAGE/' + this.course.coursecode]);
     }
   }
@@ -30,7 +30,10 @@ export class AddStudentPageComponent implements OnInit {
       this.addForm = new FormGroup({
         'name' : new FormControl('Enter Your Full Name',[Validators.required]),
         'id' : new FormControl(null,[Validators.required]),
-        'email' : new FormControl('xyz@mail.aub.edu',[Validators.required,Validators.email])
+        'email' : new FormControl('xyz@mail.aub.edu',[Validators.required,Validators.email]),
+        'phone' : new FormControl(null,[Validators.required]),
+        'dob' : new FormControl(null,[Validators.required]),
+        'gender' : new FormControl(null,[Validators.required]),
       });
   }
 
