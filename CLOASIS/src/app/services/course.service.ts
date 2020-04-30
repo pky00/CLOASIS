@@ -23,6 +23,7 @@ export class CourseService {
   coursesEmitter = new Subject<Course[]>();
   selectedCourse = new Subject<Course>();
   allStudentsEmiiter = new Subject<Student[]>();
+  unregisteredStudents = new Subject<Student[]>();
 
   currentCourse: Course;
   currentCourseCode: string;
@@ -90,6 +91,7 @@ export class CourseService {
     //this.http.get('https://cloasisapi.azurewebsites.net/Class/FetchClass/214').subscribe( course => {
       //return course[0]["CRN"];
     //});
+    return {crn:"N/A", name: "N/A", coursecode: "N/A", room: "N/A", professor: "N/A", progress: 50,profEmail:"",profOffice:"",description:"",credits:3,sectionNum:1,semester:""};
   }
 
   setCourse(courseCode:string, a: Course = {crn:"N/A", name: "N/A", coursecode: "N/A", room: "N/A", professor: "N/A", progress: 50,profEmail:"",profOffice:"",description:"",credits:3,sectionNum:1,semester:""}){
@@ -126,16 +128,18 @@ export class CourseService {
 
   addStudent(crn:string,studentid:string,teamID:string,name:string,email:string,phone:string,dob:string,gender:string){
     this.http.post<Student>('https://cloasisapi.azurewebsites.net/Student/CreateStudent',{"studentid":studentid,"teaM_ID":teamID,"name":name,"email":email,"phone":phone,"dob":dob,"gender":gender},httpOptions).subscribe();
-    this.http.post<Student>('https://cloasisapi.azurewebsites.net/Registration/RegisterStudent/'+studentid,{"data":[crn]},httpOptions).subscribe();
   }
 
-  removeStudent(id: string,a :string[]=[]){
+
+
+  removeStudent(id: string,a :string[]=[], b: number = 0){
     this.http.get('https://cloasisapi.azurewebsites.net/Registration/GetClassesOfStudent/'+id,httpOptions).subscribe( reg => {
       for(let key in reg){
         a.push(reg[key]["CRN"]);
+        b++;
       }
-      console.log(a);
     });
+    if (b > 0 ){
     const options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -147,9 +151,9 @@ export class CourseService {
     
     this.http
       .delete('https://cloasisapi.azurewebsites.net/Registration/DropStudent/'+id, options)
-      .subscribe();
-    //this.http.delete('https://cloasisapi.azurewebsites.net/Registration/DropStudent/'+id,).subscribe();
+      .subscribe();}
     this.http.delete('https://cloasisapi.azurewebsites.net/Student/DeleteStudent/'+id,httpOptions).subscribe();
+    this.getStudents();
   }
 
   editCourse(crn: string, course: Course){
@@ -158,6 +162,25 @@ export class CourseService {
         this.courses[i]=course;
       }
     });
+  }
+
+  getUnregStudents(cr:string,a:Student[]=[]){
+    this.http.get('https://cloasisapi.azurewebsites.net/Registration/GetStudentsNotInClass/'+cr,httpOptions).subscribe(
+      stds => {
+        for(let key in stds){
+          a.push({studentid: stds[key]['STUDENTID'],name: stds[key]['NAME'],email:stds[key]['email'],teaM_ID: stds[key]['teaM_ID'],phone:stds[key]['phone'],dob:stds[key]['dob'],gender:stds[key]['gender']});
+        }
+        this.unregisteredStudents.next(a);
+      }
+    );
+  }
+
+  registerStudent(id:string, crn:string){
+    console.log(crn);
+    this.http.post<Student>('https://cloasisapi.azurewebsites.net/Registration/RegisterStudent/'+id,{"data":[crn]},httpOptions).subscribe( a => {
+      this.getUnregStudents(crn);
+    });
+    
   }
 
   unregisterStudent(id: string,crn: string){
@@ -172,8 +195,9 @@ export class CourseService {
     
     this.http
       .delete('https://cloasisapi.azurewebsites.net/Registration/DropStudent/'+id, options)
-      .subscribe();
-    this.getCourseStudents(crn);
+      .subscribe( a => {
+        this.getCourseStudents(crn);
+      });
   }
 
   getCourses(a:Course[]=[]){

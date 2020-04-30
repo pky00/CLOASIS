@@ -24,7 +24,7 @@ export class StudentListComponent implements OnInit {
   course: Course;
   students: Student[];
   selectedStudent: Student = {studentid: "",name: "Please select a Student",email:"",teaM_ID: "",phone:"",dob:"",gender:""};
-  selectedStudentGrades: number[] = [20,40,60,70];
+  selectedStudentGrades: number[] = [0,0,0,0];
   change: boolean = false;
 
   public barChartOptions = {
@@ -50,13 +50,11 @@ export class StudentListComponent implements OnInit {
   ];
 
 
-  //this.barChartData.forEach((dataset, index)=>{
-    //this.barChartData[index] = Object.assign({},this.barChartData[index], {
-      //data: this.selectedStudentGrades
-    //});
-  //});
+  
   selectStudent(id:string){
+    this.change = true;
     this.courseService.getStudent(id);
+    
   }
 
   delete(id:string){
@@ -82,14 +80,22 @@ export class StudentListComponent implements OnInit {
       );
     this.courseService.selectedStudent.subscribe( std => {
       this.selectedStudent = std;
+      this.gradesService.getStudentGradesInClass(this.selectedStudent.studentid,this.course.crn);
     });
     this.sub = this.courseService.studentsEmitter.subscribe(data => {
     this.students = data;
     });
+
     this.selectedGrades = this.gradesService.selectedStudentGradesEmmitter
       .subscribe(
         (grades:number[]) => {
           this.selectedStudentGrades = grades;
+          this.barChartData.forEach((dataset, index)=>{
+            this.barChartData[index] = Object.assign({},this.barChartData[index], {
+                data: this.selectedStudentGrades
+              });
+            });
+            this.change = false;
         }
       );
   }
