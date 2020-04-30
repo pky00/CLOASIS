@@ -20,7 +20,7 @@ interface course {crn: string;
 export class CourseResolverService implements Resolve<course>{
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<course> | Promise<course> | course {
     this.courseService.currentCourseCode = route.params['coursecode'];
-    return this.courseService.getCourse(route.params['coursecode']);
+    return this.courseService.getCourseCRN(route.params['coursecode']);
   }
   constructor(private courseService: CourseService) { }
 }

@@ -26,7 +26,11 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { StudentTableComponent } from './students-page/student-table/student-table.component';
 import { EditStudentTableComponent } from './students-page/student-table/edit-student-table/edit-student-table.component';
 import {HttpClientModule} from '@angular/common/http';
+
 import { ExamDetailPageComponent } from './courses-page/course-detail-page/exams-page/exam-detail-page/exam-detail-page.component'
+
+import { AddStudentComponent } from './students-page/add-student/add-student.component'
+
 
 
 @NgModule({
@@ -48,7 +52,11 @@ import { ExamDetailPageComponent } from './courses-page/course-detail-page/exams
     AssignmentsPageComponent,
     StudentTableComponent,
     EditStudentTableComponent,
+
     ExamDetailPageComponent
+
+    AddStudentComponent
+
   ],
   imports: [
     BrowserModule,
