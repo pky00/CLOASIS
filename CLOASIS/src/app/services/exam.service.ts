@@ -9,8 +9,8 @@ export class ExamService {
   constructor() { }
 
   exams: Exam[]=[
-    {exam_id: 1,crn: "22041",duration: 2,room : "Bliss 205",start_time : "15:30:00",title : "Midterm Exam",date : "2020-01-01"},
-    {exam_id: 2,crn: "22041",duration: 2,room : "Bliss 205",start_time : "15:30:00",title : "Final Exam",date : "2020-01-01"}
+    {exam_id: 1,crn: "22041",duration: 2,room : "Bliss 205",start_time : "15:30:00",title : "Midterm Exam",date : "2020-01-01",clo_id:"1",report_id:"1"},
+    {exam_id: 2,crn: "22041",duration: 2,room : "Bliss 205",start_time : "15:30:00",title : "Final Exam",date : "2020-01-01",clo_id:"1",report_id:"1"}
   ];
 
   get_Exams(crn: string){

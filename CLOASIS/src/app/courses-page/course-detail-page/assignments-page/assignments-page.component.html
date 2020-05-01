@@ -1,1 +1,20 @@
-<div style="height: 529px"><p>assignments-page works!</p></div>
+<div style="height: 529px">
+    <div *ngFor="let assignment of assignments; let id = index" class="card">
+        <h5 class="card-header">{{assignment.description}}</h5>
+        <div class="card-body">
+            <table class="table text-center" style="color:black;">
+                <tr>
+                    <th class="text-center">CLO ID:</th>
+                    <th class="text-center">Report ID:</th>
+                    <th class="text-center">Date:</th>
+                </tr>
+                <tr>
+                    <td class="text-center"><span>{{assignment.clo_id}}</span></td>
+                    <td class="text-center"><span>{{assignment.report_id}}</span></td>
+                    <td class="text-center"><span>{{get_report_date(assignment.report_id)}}</span></td>
+                  </tr>
+            </table>
+            <button  class="btn btn-info" size="md" rounded="true" type="button" mdbBtn >View Details</button>
+        </div>
+      </div>
+</div>

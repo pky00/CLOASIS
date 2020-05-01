@@ -6,11 +6,8 @@ import { Grades } from '../models/grades.model';
 import { CGD } from '../models/courseGradeDistribution.model';
 import { Subject } from 'rxjs';
 import { CourseService } from './course.service';
-
-import { StudentGrade } from '../models/student-grade.model';
-
 import { HttpClient } from '@angular/common/http';
-
+import { StudentGrade } from '../models/student-grade.model';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +46,19 @@ export class GradesService {
     {crn:"202023",assignment1:10,assignment2:25,midterm:25,final:40,overall:100}
   ];
 
+  getStudentGradesInClass(id:string,crn:string,b:number = 0){
+    this.http.get('https://cloasisapi.azurewebsites.net/Grade/GetGradesOfStudentInClass/'+id+'/'+crn).subscribe( grd => {   
+      for(let key in grd){
+        b++;
+      }
+      if(b>0){
+        this.selectedStudentGradesEmmitter.next([grd[0]["GRADE"],grd[1]["GRADE"],grd[2]["GRADE"],grd[3]["GRADE"]]);
+      }
+      else{
+        this.selectedStudentGradesEmmitter.next([0,0,0,0]);
+      }
+    });
+  }
 
   student_grades: StudentGrade[]=[
     {grade_id:"1",student_id:"202003295",grade:100,description:"Final Exam"},
@@ -79,24 +89,6 @@ export class GradesService {
 
     return grades
   }
-
-    
-
-
-  getStudentGradesInClass(id:string,crn:string,b:number = 0){
-    this.http.get('https://cloasisapi.azurewebsites.net/Grade/GetGradesOfStudentInClass/'+id+'/'+crn).subscribe( grd => {   
-      for(let key in grd){
-        b++;
-      }
-      if(b>0){
-        this.selectedStudentGradesEmmitter.next([grd[0]["GRADE"],grd[1]["GRADE"],grd[2]["GRADE"],grd[3]["GRADE"]]);
-      }
-      else{
-        this.selectedStudentGradesEmmitter.next([0,0,0,0]);
-      }
-    });
-  }
-
 
   selectChartGrades(id:string,crn:string,g: number[] = []){
     this.grades.forEach( grade => {

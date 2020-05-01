@@ -15,11 +15,8 @@ import { ExamsPageComponent } from './courses-page/course-detail-page/exams-page
 import { AssignmentsPageComponent } from './courses-page/course-detail-page/assignments-page/assignments-page.component';
 import { EditStudentTableComponent } from './students-page/student-table/edit-student-table/edit-student-table.component';
 import { StudentTableComponent } from './students-page/student-table/student-table.component';
-
-import { ExamDetailPageComponent } from './courses-page/course-detail-page/exams-page/exam-detail-page/exam-detail-page.component';
-
 import { AddStudentComponent } from './students-page/add-student/add-student.component';
-
+import { ExamDetailPageComponent } from './courses-page/course-detail-page/exams-page/exam-detail-page/exam-detail-page.component';
 
 
 const routes: Routes = [
