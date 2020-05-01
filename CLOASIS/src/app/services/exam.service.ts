@@ -16,6 +16,7 @@ export class ExamService {
 
   constructor(private http:HttpClient,private courseService:CourseService) { }
 
+
   editExamGrade(grade:number,stdID:string){
     this.http.get('https://cloasisapi.azurewebsites.net/Grade/GetGradesOfStudentInClass/'+stdID+'/'+this.courseService.currentCourse.crn).subscribe( grds => {
       for(let gr in grds){
@@ -38,7 +39,7 @@ export class ExamService {
           room : exams[ex]["ROOM"],
           start_time : exams[ex]["START_TIME"],
           title : exams[ex]["DESCRIPTION"],
-          date : exams[ex]["LECTURE_DATE"]})
+          date : exams[ex]["LECTURE_DATE"]});
       }
       this.examsEmitter.next(a);
     });
