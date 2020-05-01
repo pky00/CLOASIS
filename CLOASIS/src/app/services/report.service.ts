@@ -18,13 +18,6 @@ export class ReportService {
 
   reportEmitter = new Subject<Report[]>();
 
-  get_clos(crn: string){
-    var clos: CLO[]=[];
-    
-
-    return clos
-  }
-
   get_report_dates(ids:string[],a:Report[]=[]){
     for(let k in ids){
       this.http.get('https://cloasisapi.azurewebsites.net/Report/GetReportOfId/'+ids[k],httpOptions).subscribe( reps => {
@@ -34,8 +27,6 @@ export class ReportService {
     }
   }
 
- 
-
-
   constructor(private http:HttpClient) { }
+
 }

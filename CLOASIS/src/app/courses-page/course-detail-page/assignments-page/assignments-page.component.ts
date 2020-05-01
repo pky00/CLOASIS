@@ -16,10 +16,11 @@ export class AssignmentsPageComponent implements OnInit {
 assignments: Assignment[];
 course: Course;
 reports: Report[];
+
   constructor(private assignmentservice: AssignmentService, private courseserive: CourseService,private gradeservie: GradesService,private reportservice: ReportService) { }
 
   ngOnInit(): void {
-    this.course=this.courseserive.currentCourse;
+    this.course=this.courseserive.currentCourse
     this.assignmentservice.get_assignments(this.course.crn);
     this.assignmentservice.assignmentsEmitter.subscribe( gg => {
       var repIDs: string[]=[];

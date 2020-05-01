@@ -30,4 +30,5 @@ get_assignments(crn: string,a:Assignment[]=[]){
 }
 
   constructor(private http:HttpClient) { }
+
 }

@@ -1,13 +1,14 @@
+
 <div style="min-height: 529px; padding:15px">
     <div *ngFor="let assignment of assignments; let id = index" class="card">
         <h5 class="card-header">{{assignment.description}}</h5>
         <div class="card-body">
             <table class="table text-center" style="color:black;">
-                <tr>
+                <thead>
                     <th class="text-center">Report ID</th>
                     <th class="text-center">Date</th>
                     <th class="text-center">Average</th>
-                </tr>
+                </thead>
                 <tr>
                     <td class="text-center"><span>{{assignment.report_id}}</span></td>
                     <td class="text-center"><span>{{get_report_date(assignment.report_id)}}</span></td>

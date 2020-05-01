@@ -23,7 +23,6 @@ export class ExamService {
 
   constructor(private http:HttpClient,private courseService:CourseService) { }
 
-
   editExamGrade(grade:number,stdID:string){
     this.http.get('https://cloasisapi.azurewebsites.net/Grade/GetGradesOfStudentInClass/'+stdID+'/'+this.courseService.currentCourse.crn,httpOptions).subscribe( grds => {
       for(let gr in grds){
