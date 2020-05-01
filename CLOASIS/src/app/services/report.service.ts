@@ -1,48 +1,41 @@
 import { Injectable } from '@angular/core';
 import { Report } from '../models/report.model';
 import { CLO } from '../models/clo.model';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type' : 'application/json',
+    'Accept' : 'q=0.8;application/json;q=0.9'
+  })
+};
+
 @Injectable({
   providedIn: 'root'
 })
 export class ReportService {
-  reports: Report[]=[
-    {report_id:"1",report_date:"01-01-01"},
-    {report_id:"2",report_date:"01-01-01"},
-    {report_id:"3",report_date:"01-01-01"},
-    {report_id:"4",report_date:"01-01-01"}
-  ];
-  clos: CLO[]=[
-    {clo_id:"1", course_crn: "22041", report_id: "1", description: "Lecture 1"},
-    {clo_id:"2", course_crn: "22041", report_id: "2", description: "Lecture 2"},
-    {clo_id:"3", course_crn: "22041", report_id: "3", description: "Lecture 3"},
-    {clo_id:"4", course_crn: "22041", report_id: "4", description: "Lecture 4"}
-  ];
+
+  reportEmitter = new Subject<Report[]>();
 
   get_clos(crn: string){
     var clos: CLO[]=[];
-    this.clos.forEach((clo,i:number)=>{
-      if (clo.course_crn===crn){
-        clos.push(clo);
-      }
-    })
+    
 
     return clos
   }
 
-  get_date(id:string){
-    var date: string;
-    this.reports.forEach((report,i:number)=>{
-      if (report.report_id===id){
-        console.log(id)
-        date=report.report_date
-      }
-    })
-
-    return date
+  get_report_dates(ids:string[],a:Report[]=[]){
+    for(let k in ids){
+      this.http.get('https://cloasisapi.azurewebsites.net/Report/GetReportOfId/'+ids[k],httpOptions).subscribe( reps => {
+        a.push({report_id:reps[0]["REPORT_ID"],report_date:reps[0]["REPORT_DATE"]});
+        this.reportEmitter.next(a);
+      })
+    }
   }
 
  
 
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 }
