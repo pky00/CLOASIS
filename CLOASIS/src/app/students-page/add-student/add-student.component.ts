@@ -20,12 +20,12 @@ export class AddStudentComponent implements OnInit {
     this.studentID=this.courseService.editStudent_ID;
     this.student=this.courseService.getStudent(this.studentID);
     this.EditForm=new FormGroup({
-      'ID': new FormControl(this.student.studentid,[Validators.required,Validators.pattern('[0-9]{9,9}$')]),
-      'Name': new FormControl(this.student.name,[Validators.required,Validators.pattern('[A-Z][a-z]+[ ][A-Z][a-z]+')]) ,
-      'Email': new FormControl(this.student.email,[Validators.required,Validators.email]) ,
-      'Phone': new FormControl(this.student.phone,[Validators.required,Validators.pattern('[+][0-9]+')]) ,
-      'Gender':new FormControl(this.student.gender,[Validators.required]) ,
-      'DOB': new FormControl(this.student.dob,[Validators.required]) 
+      'ID': new FormControl(null,[Validators.required,Validators.pattern('[0-9]{9,9}$')]),
+      'Name': new FormControl(null,[Validators.required,Validators.pattern('[A-Z][a-z]+[ ][A-Z][a-z]+')]) ,
+      'Email': new FormControl(null,[Validators.required,Validators.email]) ,
+      'Phone': new FormControl(null,[Validators.required,Validators.pattern('[+][0-9]+')]) ,
+      'Gender':new FormControl(null,[Validators.required]) ,
+      'DOB': new FormControl(null,[Validators.required]) 
     })
   }
   onSubmit(){

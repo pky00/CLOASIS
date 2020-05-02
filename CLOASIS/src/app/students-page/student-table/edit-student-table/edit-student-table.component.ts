@@ -17,26 +17,38 @@ export class EditStudentTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.studentID=this.courseService.editStudent_ID;
-    this.student=this.courseService.getStudent(this.studentID);
+    this.courseService.getStudent(this.studentID);
+    this.courseService.selectedStudent.subscribe( gg => {
+      this.student = gg;
+      this.EditForm=new FormGroup({
+        'ID': new FormControl(this.student.studentid,[Validators.required,Validators.pattern('[0-9]{9,9}$')]) ,
+        'Name': new FormControl(this.student.name,[Validators.required,Validators.pattern('[A-Z][a-z]+[ ][A-Z][a-z]+')]) ,
+        'Email': new FormControl(this.student.email,[Validators.required,Validators.email]) ,
+        'Phone': new FormControl(this.student.phone,[Validators.required,Validators.pattern('[+][0-9]+')]) ,
+        'Gender':new FormControl(this.student.gender,[Validators.required]) ,
+        'TeamID': new FormControl(this.student.teaM_ID,[Validators.required]) ,
+        'DOB': new FormControl(this.student.dob,[Validators.required]) 
+      })
+    });
     this.EditForm=new FormGroup({
       'ID': new FormControl(this.student.studentid,[Validators.required,Validators.pattern('[0-9]{9,9}$')]) ,
       'Name': new FormControl(this.student.name,[Validators.required,Validators.pattern('[A-Z][a-z]+[ ][A-Z][a-z]+')]) ,
       'Email': new FormControl(this.student.email,[Validators.required,Validators.email]) ,
       'Phone': new FormControl(this.student.phone,[Validators.required,Validators.pattern('[+][0-9]+')]) ,
       'Gender':new FormControl(this.student.gender,[Validators.required]) ,
-      'TeamID': new FormControl(this.student.teaM_ID,[Validators.required]) ,
+      'TeamID': new FormControl(this.student.teaM_ID) ,
       'DOB': new FormControl(this.student.dob,[Validators.required]) 
     })
   }
   onSubmit(){
     if(this.EditForm.valid){
       this.courseService.editStudent(this.student.studentid,{studentid:this.EditForm.get('ID').value,name: this.EditForm.get('Name').value,email: this.EditForm.get('Email').value,teaM_ID: this.EditForm.get('TeamID').value,phone:this.EditForm.get('Phone').value,dob:this.EditForm.get('DOB').value,gender:this.EditForm.get('Gender').value});
-      this.router.navigate(['/HOMEPAGE' ]);
+      this.router.navigate(['/STUDENTSPAGE' ]);
     }
     }
 
   onCancel(){
-    this.router.navigate(['/HOMEPAGE' ]);
+    this.router.navigate(['/STUDENTSPAGE' ]);
   }
   }
 
